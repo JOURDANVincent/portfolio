@@ -22,12 +22,13 @@
    
    // ROUTES
    export const allRoutes = [ 
-      { name: 'Accueil', link: `${base}/`, }
-      { name: 'A Propos de moi', link: `${base}/about`, },
-      { name: 'Réalisations Web & Mobile', link: `${base}/project`, },
-      { name: 'Expériences & Formations', link: `${base}/experience`, },
-      { name: 'Languages & Frameworks', link: `${base}/skill`, },
-      { name: 'Contact', link: `${base}/contact`, },
+      { name: 'Accueil', link: '/', },
+      { name: 'A Propos de moi', link: '/about', },
+      { name: 'Réalisations Web & Mobile', link: '/project', },
+      { name: 'Expériences & Formations', link: '/experience', },
+      // { name: 'Compétences & Connaissances', link: '/skill', },
+      { name: 'Languages & Frameworks', link: '/skill', },
+      { name: 'Contact', link: '/contact', },
    ]
 
    // NAVBAR
@@ -78,7 +79,7 @@
                {:else if single.link === '/contact'} <ContactSvg size={linkIconSize} color={'#E14242'}/>
                {/if}
             </span>
-            <span class="link">{single.name}</span>
+            <span class="link">{base + single.name}</span>
          </a>
       {/each}
    </div>
@@ -88,7 +89,7 @@
          <a href='https://github.com/JOURDANVincent' target="_blank" rel="noreferrer">
             <GithubSvg size={footerIconSize} color={'#777'} />
          </a>
-         <a href='https://www.linkedin.com/in/VincentJourdan.' target="_blank" rel="noreferrer">
+         <a href='https://www.linkedin.com/in/VincentJourdan' target="_blank" rel="noreferrer">
             <LinkedinSvg size={footerIconSize} color={'#777'} />
          </a>
          <!-- <a href='/contact' rel="noreferrer" on:click={toggleMenu}>

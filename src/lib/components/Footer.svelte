@@ -17,7 +17,7 @@
         <a href='https://github.com/JOURDANVincent' target="_blank" rel="noreferrer">
             <GithubSvg size={footerIconSize} color={'#777'} />
         </a>
-        <a href="{base}/" target="_blank" rel="noreferrer">
+        <a href="https://www.linkedin.com/in/VincentJourdan" target="_blank" rel="noreferrer">
             <LinkedinSvg size={footerIconSize} color={'#777'} />
         </a>
         <a href="{base}/contact" rel="noreferrer">
