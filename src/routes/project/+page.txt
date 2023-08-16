@@ -1,0 +1,284 @@
+<script lang="ts">
+
+   /** @type {import('./$types').PageData} */
+   export let data: any;
+   
+   let filter: string = 'all'
+   $: filterType = (type: string) => filter = type
+
+</script>
+
+<section>
+   <!-- <h1>
+      <strong>Web et Mobile</strong>
+   </h1> -->
+   <div class="filter">
+      <button class={`filter-button ${filter === 'all' ? "active" : ""}`} on:click={() => filterType('all')}>Toutes</button>
+      <button class={`filter-button ${filter === 'mobile' ? "active" : ""}`} on:click={() => filterType('mobile')}>Mobile</button>
+      <button class={`filter-button ${filter === 'web' ? "active" : ""}`} on:click={() => filterType('web')}>Web</button>
+   </div>
+
+   {#if filter === 'all' || filter === 'mobile'}
+      <div class="section_mobile">
+         {#each data.mobileApp as mobileApp, i}
+            <div class="card">
+               <div class="img_box_mobile">
+                  {#each mobileApp.path_desktop as path }
+                  <div class="img_mobile">
+                     <img src={path} alt={mobileApp.alt}>
+                  </div>
+                  {/each}
+               </div>
+               <div class="text_zone">
+                  <h2>{mobileApp.title}</h2>
+                  <h3>{mobileApp.subject}</h3>
+                  <p>{mobileApp.use}</p>
+               </div>
+            </div>
+         {/each} 
+      </div>
+   {/if}
+
+   {#if filter === 'all' || filter === 'web'}
+      <div class="section_web">
+         {#each data.webSite as webSite, i}
+            <div class="card">
+               <div class="img_box_web">
+                  <div class="img_web">
+                     <img src={webSite.path_desktop} alt={webSite.alt}>
+                  </div>
+               </div>
+               <div class="text_zone">
+                  <h2>{webSite.title}</h2>
+                  <h3>{webSite.subject}</h3>
+                  <p>{webSite.use}</p>
+               </div>
+            </div>
+         {/each}   
+      </div>
+   {/if}
+
+   <!-- {#if filter === 'all' || filter === 'web'}
+      <div class="section_web">
+         {#each data.webSite as webSite}
+            <div class="card">
+               <div class="img_box_mobile">
+                  <div class="img_web">
+                     <img src={webSite.path_desktop} alt={webSite.alt}>
+                  </div>
+               </div>
+               <div class="text_zone">
+                  <h2>{webSite.title}</h2>
+                  <h3>{webSite.subject}</h3>
+                  <p>{webSite.use}</p>
+               </div>
+            </div>
+         {/each}   
+      </div>
+   {/if} -->
+   
+</section>
+
+<style lang="css">
+   
+   section {
+      width: 100%;
+      background-image: url(../../lib/assets/svg/section/project.svg);
+      background-size: contain;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-position-x: 50%;
+      background-position-y: 40%;
+   }
+
+   .section_mobile, .section_web {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+   }
+
+   .filter {
+      height: 22px;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 1.8rem;
+   }
+
+   .filter-button {
+      height: 100%;
+      display: inline-flex;
+      align-items: center;
+      background-color: #fff1;
+      color: #000;
+      font-weight: bold;
+      padding-inline: 16px;
+      margin-right: 2px;
+      box-sizing: border-box;
+      border: none;
+   }
+
+   .active {
+      background-color: #000;
+      color: #fff;
+      font-weight: bold;
+   }
+
+   .card {
+      backdrop-filter: blur(8px);
+      margin-bottom: 8px;
+      border: 1px solid #fff2;
+      box-sizing: border-box;
+   }
+
+   .img_box_mobile, .img_box_web {
+      width: 100%;
+      display: flex;
+      background-color: #0005;
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 16px;
+      padding-bottom: 12px;
+      box-shadow: inset 2px 2px 5px 2px #000;
+      box-sizing: border-box;
+   }
+
+   .img_box_web {
+      grid-template-columns: 2fr 1f;
+      /* grid */
+   }
+
+   .img_mobile {
+      width: calc(100% / 2 - 60px);
+   }
+
+   img {
+      width: 100%;
+      object-fit: contain;
+      border: 1px solid #fff1;
+   }
+
+   .text_zone {
+      background-color: #fff2;
+      backdrop-filter: blur(8px);
+      margin-top: 0;
+      padding: 8px 18px 8px 18px;
+      overflow: hidden;
+   }
+
+   h2 { 
+      font-size: 2rem;
+   }
+
+   h3 { 
+      font-size: 1rem;
+      color: #999;
+   }
+
+   p {
+      color: #000;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 0;
+   }
+
+   @media (min-width: 768px) {
+
+      section {
+         max-width: 800px;
+         margin-inline: auto;
+         padding-top: 42px;
+         padding-bottom: 70px;
+         box-sizing: border-box;
+      }
+
+      .card {
+         margin-bottom: 12px;
+      }
+
+      .img_box_mobile, .img_box_web {
+         padding: 18px;
+         padding-top: 24px;
+      }
+
+      .img_mobile {
+         width: calc(100% / 3 - 20px);
+      }
+
+      .img_web {
+         width: 100%;
+         padding: 0px 6px 0px 6px;
+      }
+
+      h2 { 
+         font-size: 4rem;
+      }
+
+      h3 {
+         font-size: 1.2rem;
+      }
+
+      p {
+         font-size: 1.6rem;
+      }
+
+   }
+
+   @media (min-width: 992px) {
+
+      .card {
+         width: calc(50% - 8px);
+         margin-right: 6px;
+         border: none;
+      }
+
+      .img_box_mobile, .img_box_web {
+         /* max-height: 225px; */
+         border: 1px solid #fff2;
+      }
+
+      .text_zone {
+         border: 1px solid #fff2;
+         text-align: initial;
+      }
+
+      h2 { 
+         font-size: 2.6rem;
+      }
+
+      h3 {
+         font-size: 1.1rem;
+      }
+
+      p {
+         font-size: 1.5rem;
+      }
+   }
+
+   @media (min-width: 1180px) {
+
+      section {
+         max-width: 1300px;
+      }
+
+      h2 { 
+         font-size: 3.4rem;
+      }
+
+      h3 {
+         font-size: 1.2rem;
+      }
+
+      p {
+         font-size: 1.6rem;
+      }
+
+      .img_box_mobile, .img_box_web {
+         /* max-height: 300px; */
+         padding: 36px;
+      }
+   }
+   
+</style>
