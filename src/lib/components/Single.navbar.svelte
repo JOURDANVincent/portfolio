@@ -22,12 +22,12 @@
    
    // ROUTES
    export const allRoutes = [ 
-      { name: 'Accueil', link: `${base}/`, }
-      { name: 'A Propos de moi', link: `${base}/about`, },
-      { name: 'Réalisations Web & Mobile', link: `${base}/project`, },
-      { name: 'Expériences & Formations', link: `${base}/experience`, },
-      { name: 'Languages & Frameworks', link: `${base}/skill`, },
-      { name: 'Contact', link: `${base}/contact`, },
+      { name: 'Accueil', link: '/' },
+      { name: 'A Propos de moi', link: '/about' },
+      { name: 'Réalisations Web & Mobile', link: '/project' },
+      { name: 'Expériences & Formations', link: '/experience' },
+      { name: 'Languages & Frameworks', link: '/skill' },
+      { name: 'Contact', link: '/contact' },
    ]
 
    // NAVBAR
@@ -64,18 +64,18 @@
    <div class="menu-list" style="opacity: {isMenuOpen ? '1' : '0'}">
       {#each allRoutes as single}
          <a 
-            href={single.link} 
+            href={base + single.link} 
             style="opacity: {isMenuOpen ? '1' : '0'}; "
             class={$page.url.pathname == single.link ? "menu-item active" : "menu-item"} 
             on:click={toggleMenu}
          >
             <span class="icon">
-               {#if single.link === '/'} <TagSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if single.link === '/about'} <AboutSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if single.link === '/project'} <ComputerSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if single.link === '/skill'} <SkillSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if single.link === '/experience'} <ExperienceSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if single.link === '/contact'} <ContactSvg size={linkIconSize} color={'#E14242'}/>
+               {#if single.link === `${base}/`} <TagSvg size={linkIconSize} color={'#E14242'}/>
+               {:else if single.link === `${base}/about`} <AboutSvg size={linkIconSize} color={'#E14242'}/>
+               {:else if single.link === `${base}/project`} <ComputerSvg size={linkIconSize} color={'#E14242'}/>
+               {:else if single.link === `${base}/skill`} <SkillSvg size={linkIconSize} color={'#E14242'}/>
+               {:else if single.link === `${base}/experience`} <ExperienceSvg size={linkIconSize} color={'#E14242'}/>
+               {:else if single.link === `${base}/contact`} <ContactSvg size={linkIconSize} color={'#E14242'}/>
                {/if}
             </span>
             <span class="link">{single.name}</span>
