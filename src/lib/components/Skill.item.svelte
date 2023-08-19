@@ -3,6 +3,9 @@
     import { tweened } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
 
+    // PATH
+    import { base } from '$app/paths';
+
     export let title:string;
     export let src:string;
     export let level: number;
@@ -16,7 +19,7 @@
 
 <div class="item" on:click={() => progress.set(level)} aria-roledescription="show level">
 
-    <img {src} alt={src}>
+    <img src={base + src} alt={src}>
     
     <div class="content">
 

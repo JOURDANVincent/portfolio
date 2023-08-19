@@ -4,18 +4,18 @@
    import { page } from '$app/stores';
 
    // SVG FOOTER ICONS
-   import GithubSvg from "../svg/footer/github.svg.svelte";
-   import LinkedinSvg from "../svg/footer/linkedin.svg.svelte";
-   import EmailSvg from "../svg/footer/Email.svg.svelte";
+   import GithubSvg from "$lib/svg/footer/github.svg.svelte";
+   import LinkedinSvg from "$lib/svg/footer/linkedin.svg.svelte";
+   import EmailSvg from "$lib/svg/footer/Email.svg.svelte";
 
    // SVG MENU ICONS
-   import TagSvg from '../svg/menu/Tag.svg.svelte';
-	import AboutSvg from '../svg/menu/About.svg.svelte';
-   import ComputerSvg from '../svg/menu/Computer.svg.svelte';
-   import ProgressSvg from '../svg/menu/Progress.svg.svelte'
-   import ExperienceSvg from '../svg/menu/Experience.svg.svelte';
-   import SkillSvg from '../svg/menu/Skill.svg.svelte';
-   import ContactSvg from '../svg/menu/Contact.svg.svelte';
+   import TagSvg from '$lib/svg/menu/Tag.svg.svelte';
+	import AboutSvg from '$lib/svg/menu/About.svg.svelte';
+   import ComputerSvg from '$lib/svg/menu/Computer.svg.svelte';
+   import ProgressSvg from '$lib/svg/menu/Progress.svg.svelte'
+   import ExperienceSvg from '$lib/svg/menu/Experience.svg.svelte';
+   import SkillSvg from '$lib/svg/menu/Skill.svg.svelte';
+   import ContactSvg from '$lib/svg/menu/Contact.svg.svelte';
 
    // PATH
    import { base } from '$app/paths';
@@ -70,12 +70,12 @@
             on:click={toggleMenu}
          >
             <span class="icon">
-               {#if single.link === `${base}/`} <TagSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if single.link === `${base}/about`} <AboutSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if single.link === `${base}/project`} <ComputerSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if single.link === `${base}/skill`} <SkillSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if single.link === `${base}/experience`} <ExperienceSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if single.link === `${base}/contact`} <ContactSvg size={linkIconSize} color={'#E14242'}/>
+               {#if base + single.link === `${base}/`} <TagSvg size={linkIconSize} color={'#E14242'}/>
+               {:else if base + single.link === `${base}/about`} <AboutSvg size={linkIconSize} color={'#E14242'}/>
+               {:else if base + single.link === `${base}/project`} <ComputerSvg size={linkIconSize} color={'#E14242'}/>
+               {:else if base + single.link === `${base}/skill`} <SkillSvg size={linkIconSize} color={'#E14242'}/>
+               {:else if base + single.link === `${base}/experience`} <ExperienceSvg size={linkIconSize} color={'#E14242'}/>
+               {:else if base + single.link === `${base}/contact`} <ContactSvg size={linkIconSize} color={'#E14242'}/>
                {/if}
             </span>
             <span class="link">{single.name}</span>
