@@ -29,6 +29,8 @@ html, body, .app {
 	width: 100%;
 	margin: 0;
 	padding: 0;
+	padding-top: 14px;
+	box-sizing: border-box;
 }
 
 
