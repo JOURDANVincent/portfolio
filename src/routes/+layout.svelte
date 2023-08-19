@@ -1,27 +1,27 @@
 <script lang="ts">
 	
 	// STORE & DATA
-	import { reactiveMeta } from '$lib/stores/MetaStore';
+	// import { reactiveMeta } from '$lib/stores/MetaStore';
 	import { page } from '$app/stores';
-	import { SITE_NAME, META_DATA } from '$lib/data/meta.data'
+	// import { SITE_NAME, META_DATA } from '$lib/data/meta.data'
 
 	// COMPONENTS
 	import SingleNavbar from '$lib/components/Single.navbar.svelte';
 
 	// REACTIVE
-   	$: {
-		let newMeta: any = META_DATA.find( meta => meta.pathname == $page.url.pathname)
-		reactiveMeta.update(meta => newMeta)
-	}
+   	// $: {
+	// 	let newMeta: any = META_DATA.find( meta => meta.pathname == $page.url.pathname)
+	// 	reactiveMeta.update(meta => newMeta)
+	// }
 
 </script>
 
 <svelte:head>
-	<title>{$reactiveMeta.title}</title>
+	<!-- <title>{$reactiveMeta.title}</title> -->
 	<link rel="canonical" href={$page.url.href} />
 
 	<!-- <meta type="website"> -->
-	<meta property="og:title" content={$reactiveMeta.title} />
+	<!-- <meta property="og:title" content={$reactiveMeta.title} />
 	<meta property="og:url" content={$page.url.href} />
 	<meta property="og:site_name" content={SITE_NAME} />
 	<meta property="og:description" content={$reactiveMeta.desc} />
@@ -29,7 +29,7 @@
 	<meta property="twitter:site" content={SITE_NAME} />
 	<meta property="twitter:title" content={$reactiveMeta.title} />
 	<meta property="twitter:description" content={$reactiveMeta.desc} />
-	<meta property="twitter:image" content={`${$page.url.origin}/${$reactiveMeta.image}`} />
+	<meta property="twitter:image" content={`${$page.url.origin}/${$reactiveMeta.image}`} /> -->
 
 </svelte:head>
 

@@ -2,6 +2,9 @@
 
    /** @type {import('./$types').PageData} */
    export let data: any;
+
+   // PATH
+   import { base } from '$app/paths';
    
    let filter: string = 'all'
    $: filterType = (type: string) => {
@@ -45,7 +48,7 @@
                      <div class="img_box">
                         {#each project.path_desktop as path }
                         <div class="img_mobile">
-                           <img src={path} alt={project.alt}>
+                           <img src={base + path} alt={project.alt}>
                         </div>
                         {/each}
                      </div>
@@ -53,7 +56,7 @@
                      <div class="img_box">
                         <!-- <div class="img_backdrop" style="background-image: url({project.path_desktop})"></div> -->
                         <div class="img_desktop">
-                           <img src={project.path_desktop} alt={project.alt}>
+                           <img src={base + project.path_desktop} alt={project.alt}>
                         </div>
                      </div>
                   {/if}
@@ -61,7 +64,7 @@
                   <div class="text_zone">
 
                      <div class="platform-card">
-                        <img class="platform-icon" src="/images/svg/card/{project.platform}.svg" alt="icon device desktop" />
+                        <img class="platform-icon" src="{base}/images/svg/card/{project.platform}.svg" alt="icon device desktop" />
                         <!-- <h4>{project.language}</h4> -->
                      </div>
                      
@@ -98,7 +101,7 @@
                   <div class="img_box">
                      {#each project.path_desktop as path }
                         <div class="img_mobile">
-                           <img src={path} alt={project.alt}>
+                           <img src={base + path} alt={project.alt}>
                         </div>
                      {/each}
                   </div>
@@ -106,7 +109,7 @@
                   <div class="img_box">
                      <!-- <div class="img_backdrop" style="background-image: url({project.path_desktop})"></div> -->
                      <div class="img_desktop">
-                        <img src={project.path_desktop} alt={project.alt}>
+                        <img src={base + project.path_desktop} alt={project.alt}>
                      </div>
                   </div>
                {/if}
@@ -114,7 +117,7 @@
                <div class="text_zone">
 
                   <div class="platform-card">
-                     <img class="platform-icon" src="/images/svg/card/{project.platform}.svg" alt="icon device desktop" />
+                     <img class="platform-icon" src="{base}/images/svg/card/{project.platform}.svg" alt="icon device desktop" />
                      <!-- <h4>{project.language}</h4> -->
                   </div>
                      
