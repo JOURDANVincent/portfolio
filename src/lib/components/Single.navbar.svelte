@@ -21,13 +21,13 @@
    import { base } from '$app/paths';
    
    // ROUTES
-   export const allRoutes = [ 
-      { name: 'Accueil', link: '/' },
-      { name: 'A Propos de moi', link: '/about' },
-      { name: 'Réalisations Web & Mobile', link: '/project' },
-      { name: 'Expériences & Formations', link: '/experience' },
-      { name: 'Languages & Frameworks', link: '/skill' },
-      { name: 'Contact', link: '/contact' },
+   const allRoutes = [ 
+      { name: 'Accueil', path: `${base}/`},
+      { name: 'A Propos de moi', path: `${base}/about`},
+      { name: 'Réalisations Web & Mobile', path: `${base}/project`},
+      { name: 'Expériences & Formations', path: `${base}/experience`},
+      { name: 'Languages & Frameworks', path: `${base}/skill`},
+      { name: 'Contact', path: `${base}/contact`},
    ]
 
    // NAVBAR
@@ -62,23 +62,23 @@
    </div>
 
    <div class="menu-list" style="opacity: {isMenuOpen ? '1' : '0'}">
-      {#each allRoutes as single}
+      {#each allRoutes as route}
          <a 
-            href={base + single.link} 
+            href={route.path} 
             style="opacity: {isMenuOpen ? '1' : '0'}; "
-            class={$page.url.pathname == single.link ? "menu-item active" : "menu-item"} 
+            class={base + $page.url.pathname == route.path ? "menu-item active" : "menu-item"} 
             on:click={toggleMenu}
          >
             <span class="icon">
-               {#if base + single.link === `${base}/`} <TagSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if base + single.link === `${base}/about`} <AboutSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if base + single.link === `${base}/project`} <ComputerSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if base + single.link === `${base}/skill`} <SkillSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if base + single.link === `${base}/experience`} <ExperienceSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if base + single.link === `${base}/contact`} <ContactSvg size={linkIconSize} color={'#E14242'}/>
+               {#if route.path === `${base}/`} <TagSvg size={linkIconSize} color={'#E14242'}/>
+               {:else if route.path === `${base}/about`} <AboutSvg size={linkIconSize} color={'#E14242'}/>
+               {:else if route.path === `${base}/project`} <ComputerSvg size={linkIconSize} color={'#E14242'}/>
+               {:else if route.path === `${base}/skill`} <SkillSvg size={linkIconSize} color={'#E14242'}/>
+               {:else if route.path === `${base}/experience`} <ExperienceSvg size={linkIconSize} color={'#E14242'}/>
+               {:else if route.path === `${base}/contact`} <ContactSvg size={linkIconSize} color={'#E14242'}/>
                {/if}
             </span>
-            <span class="link">{single.name}</span>
+            <span class="link">{route.name}</span>
          </a>
       {/each}
    </div>
