@@ -72,3 +72,13 @@ p {
 a:hover, button:hover {
 	cursor: pointer;
 }
+
+/* SCROLL BAR */
+::-webkit-scrollbar {
+	width: 5px;
+	background-color: #222;
+}
+/* Add a thumb */
+::-webkit-scrollbar-thumb {
+	background: #E1424290;
+}
