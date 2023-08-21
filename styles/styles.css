@@ -25,20 +25,17 @@
 
 html, body, .app {
 	z-index: 0;
-	/* max-width: 1600px; */
+	height: 100%;
 	width: 100%;
 	margin: 0;
 	padding: 0;
-	/* padding-top: 14px; */
 	box-sizing: border-box;
 }
 
-
 body {
-	min-height: 100%;
 	background-attachment: fixed;
 	background-color: var(--color-bg-1);
-	background-size: 100% 100%;
+	background-size: 100%;
 	background-image: 
 		radial-gradient(
 			50% 50% at 50% 50%,
@@ -50,7 +47,7 @@ body {
 }
 
 main .skill_section {
-	min-height: 100vh;
+	min-height: 100%;
 }
 
 h1, h2, h3, p {
