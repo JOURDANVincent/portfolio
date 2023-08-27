@@ -23,11 +23,11 @@
       { name: 'A Propos de moi', path: `${base}/about`, svg: AboutSvg},
       { name: 'Réalisations Web & Mobile', path: `${base}/project`, svg: ComputerSvg},
       { name: 'Expériences & Formations', path: `${base}/experience`, svg: ExperienceSvg},
-      { name: 'Compétences', path: `${base}/skill`, svg: SkillSvg},
+      { name: 'Languages & Framworks', path: `${base}/skill`, svg: SkillSvg},
    ]
    $: currentPathName = $page.url.pathname
 
-   // NAVBAR
+   // NAVBAR GESTURE
    export let isMenuOpen: boolean;
    export let toggleMenu: any;
 
@@ -37,7 +37,7 @@
    $: footerIconSize = x >= 768 && x < 1200 ? 20 : x >= 1200 ? 22 : 16
 
    // DYNAMIC STYLE
-   $: elementOpacity = isMenuOpen ? 1 : 0;
+   $: elementDisplay = isMenuOpen ? 'flex' : 'none';
 
 </script>
 
@@ -66,13 +66,14 @@
    <div 
       class="menu-list" 
       style:z-index={isMenuOpen ? '10' : '-1'}
+      style:display={elementDisplay}
    >
       {#each allRoutes as route}
          <a 
             href={route.path} 
             class="menu-item"
             class:active={currentPathName === route.path}
-            style:opacity={elementOpacity}
+            
             on:click={toggleMenu}
          >
             <span class="icon"><svelte:component this={route.svg} size={linkIconSize} color={'#E14242'}/></span>
@@ -82,14 +83,13 @@
       <a 
          href='https://www.linkedin.com/in/VincentJourdan' target="_blank" rel="noreferrer"
          class="menu-item contact"
-         style:opacity={elementOpacity}
       >
          <span class="icon"><ContactSvg size={linkIconSize} color={'#E14242'}/></span>
          <span class="link">Contact</span>
       </a>
    </div>
 
-   <div class="footer" style:opacity={elementOpacity}>
+   <div class="footer" style:display={elementDisplay}>
       <div>
          <a href='https://github.com/JOURDANVincent' target="_blank" rel="noreferrer">
             <GithubSvg size={footerIconSize} color={'#777'} />

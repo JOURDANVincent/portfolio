@@ -28,16 +28,16 @@
          de visionner les bandes annonces et trailers
       </p>
       <p>
-         J'ai poursuivi le projet présenté au juri pour le diplôme de développeur web: <strong>TrocTaCraftBeer</strong> !!
+         J'ai poursuivi le projet présenté au jury pour le diplôme de développeur web: <strong>TrocTaCraftBeer</strong> !!
          Son but est de rapprocher les brasseurs amateurs, de partager leur recettes et leurs expériences
       </p>
       <p>
-         Je me suis intéressé aux frameworks tels que <strong>Next JS</strong>, <strong>Express JS </strong> 
+         Je me suis intéressé aux frameworks tels que <strong>Vue JS</strong>, <strong>Next JS</strong>, <strong>Express JS </strong> 
          et plus particulièrement à <strong>Svelte JS</strong> avec lequel je vous présente mon <strong>porte-folio</strong>
       </p>
       <p>
          Aujourd'hui, et depuis janvier 2022, j'ai le plaisir d'exercer le métier passionnant de <strong>développeur</strong> 
-         au sein de l'entreprise <strong>CGI Amiens </strong>
+         au sein de l'entreprise <strong>CGI Amiens</strong>
       </p>
 
    </div>

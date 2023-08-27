@@ -21,18 +21,15 @@
    </div>
 
    <div class="exp_section">
-      <!-- <h1>
-         <strong>Expériences</strong>
-      </h1> -->
       {#each data.experiences as exp}
          <ExpCard {...exp} />
       {/each}
    </div>
       
    <div class="study_section">
-      <!-- <h1>
+      <h1>
          <strong>Formations</strong>
-      </h1> -->
+      </h1>
       {#each data.studies as study}
          <StudyCard {...study} />
       {/each}
