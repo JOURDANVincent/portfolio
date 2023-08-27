@@ -12,11 +12,16 @@
       filter = type
    }
 
+   // DEVICE SIZE
+   let x: number;
+
 </script>
+
+<svelte:window bind:innerWidth={x} />
 
 <section class="skill_section">
 
-   <div class="filter-block">
+   <div class="filter-block" style:top={x >= 768 ? '76px' : '56px'}>
       <button class={`filter-button ${filter === 'all' ? "active" : ""}`} on:click={() => filterType('all')}>Tout</button>
       <button class={`filter-button ${filter === 'mobile' ? "active" : ""}`} on:click={() => filterType('mobile')}>Mobile</button>
       <button class={`filter-button ${filter === 'frontend' ? "active" : ""}`} on:click={() => filterType('frontend')}>Front</button>
@@ -73,25 +78,17 @@
 <style lang="css">
 
    section {
-      width: 100%;
       background-image: url(/images/svg/section/skill.svg);
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position-y: 40%;
-      background-attachment: fixed;
-      box-sizing: border-box;
    }
 
    .filter-block {
       z-index: 1;
       position: sticky;
-      top: 24px;
       width: 100%;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       align-items: center;
-      margin-bottom: 18px;
       font-size: 1.8rem;
    }
 
@@ -131,9 +128,7 @@
    @media (min-width: 768px) {
 
       section {
-         margin-top: 5vh;
-         max-width: 1200px;
-         margin-inline: auto;
+         padding-top: 42px;
          padding-bottom: 16px;
       }
 

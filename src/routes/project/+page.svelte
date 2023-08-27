@@ -25,7 +25,7 @@
 
 <section>
 
-   <div class="filter">
+   <div class="filter-block" style:top={x >= 768 ? '76px' : '56px'}>
       <button class={`filter-button ${filter === 'all' ? "active" : ""}`} on:click={() => filterType('all')}>Toutes</button>
       <button class={`filter-button ${filter === 'mobile' ? "active" : ""}`} on:click={() => filterType('mobile')}>Mobile</button>
       <button class={`filter-button ${filter === 'desktop' ? "active" : ""}`} on:click={() => filterType('desktop')}>Desktop</button>
@@ -146,26 +146,19 @@
 <style lang="css">
    
    section {
-      width: 100%;
       background-image: url(/images/svg/section/project.svg);
       background-size: contain;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
       background-position-x: 50%;
-      background-position-y: 40%;
-      box-sizing: border-box;
    }
 
-   .filter {
+   .filter-block {
       z-index: 1;
       position: sticky;
-      top: 24px;
       height: 22px;
       width: 100%;
       display: flex;
       flex-direction: row;
       align-items: center;
-      margin-bottom: 18px;
       font-size: 1.8rem;
    }
 
@@ -278,10 +271,8 @@
 
       section {
          max-width: 800px;
-         margin-inline: auto;
          padding-top: 42px;
          padding-bottom: 70px;
-         box-sizing: border-box;
       }
 
       .section_list {
@@ -347,10 +338,6 @@
    }
 
    @media (min-width: 1180px) {
-
-      section {
-         max-width: 1200px;
-      }
 
       h2 { 
          font-size: 3.4rem;

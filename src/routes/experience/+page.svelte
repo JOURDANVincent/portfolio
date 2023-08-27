@@ -13,7 +13,7 @@
 <section>
 
    <h1 class="title_section">
-      <strong>Éxpériences</strong>
+      <strong>Expériences</strong>
    </h1>
 
    <div class="resume_section">
@@ -43,14 +43,7 @@
 <style lang="css">
 
    section {
-      height: 100%;
       background-image: url(/images/svg/section/experience.svg);
-      background-size: cover;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      background-position-y: 40%;
-      box-sizing: border-box;
-      padding-bottom: 20px;
    }
 
    .title_section {
@@ -71,7 +64,6 @@
 
       .resume_section {
          width: 100%;
-         padding-inline: 6px;
          box-sizing: border-box;
       }
    }
@@ -100,8 +92,6 @@
    @media (min-width: 992px) {
 
       section {
-         max-width: 1100px;
-         margin-inline: auto;
          justify-content: center;
          grid-template-columns: 3fr 2fr;
       }

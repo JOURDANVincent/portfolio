@@ -3,97 +3,100 @@
    // REACTIVE
    import { page } from '$app/stores';
 
-   // SVG FOOTER ICONS
-   import GithubSvg from "$lib/svg/footer/github.svg.svelte";
-   import LinkedinSvg from "$lib/svg/footer/linkedin.svg.svelte";
-   import EmailSvg from "$lib/svg/footer/Email.svg.svelte";
-
    // SVG MENU ICONS
    import TagSvg from '$lib/svg/menu/Tag.svg.svelte';
 	import AboutSvg from '$lib/svg/menu/About.svg.svelte';
    import ComputerSvg from '$lib/svg/menu/Computer.svg.svelte';
-   import ProgressSvg from '$lib/svg/menu/Progress.svg.svelte'
    import ExperienceSvg from '$lib/svg/menu/Experience.svg.svelte';
    import SkillSvg from '$lib/svg/menu/Skill.svg.svelte';
    import ContactSvg from '$lib/svg/menu/Contact.svg.svelte';
+   
+   // SVG FOOTER ICONS
+   import GithubSvg from "$lib/svg/footer/github.svg.svelte";
+   import LinkedinSvg from "$lib/svg/footer/linkedin.svg.svelte";
 
    // PATH
    import { base } from '$app/paths';
    
-   // ROUTES
+   // ROUTES & PATH
    const allRoutes = [ 
-      { name: 'Accueil', path: `${base}/`},
-      { name: 'A Propos de moi', path: `${base}/about`},
-      { name: 'Réalisations Web & Mobile', path: `${base}/project`},
-      { name: 'Expériences & Formations', path: `${base}/experience`},
-      { name: 'Languages & Frameworks', path: `${base}/skill`},
-      { name: 'Contact', path: `${base}/contact`},
+      { name: 'A Propos de moi', path: `${base}/about`, svg: AboutSvg},
+      { name: 'Réalisations Web & Mobile', path: `${base}/project`, svg: ComputerSvg},
+      { name: 'Expériences & Formations', path: `${base}/experience`, svg: ExperienceSvg},
+      { name: 'Compétences', path: `${base}/skill`, svg: SkillSvg},
    ]
+   $: currentPathName = $page.url.pathname
 
    // NAVBAR
-   let isMenuOpen: boolean = false;
-   $: toggleMenu = () => isMenuOpen = !isMenuOpen
+   export let isMenuOpen: boolean;
+   export let toggleMenu: any;
 
-   // ICONS
+   // ICONS SIZE
    let x: number;
    $: linkIconSize = x >= 768 && x < 1200 ? 30 : x >= 1200 ? 38 : 24
    $: footerIconSize = x >= 768 && x < 1200 ? 20 : x >= 1200 ? 22 : 16
+
+   // DYNAMIC STYLE
+   $: elementOpacity = isMenuOpen ? 1 : 0;
 
 </script>
 
 <svelte:window bind:innerWidth={x} />
 
-<button class="menu-button" aria-label="ouvrir menu" on:click={toggleMenu}>
-   <TagSvg size={linkIconSize} color={isMenuOpen ? '#777' : '#e02424'} />
-</button>
-
+<!-- style:width={isMenuOpen || x <= 768 ? '100%' : '320px'} -->
 <nav 
    class="menu" 
-   style="width: {x}; height: {isMenuOpen ? '100%' : '0'}; z-index: {isMenuOpen ? '10' : '-1'}; background-color: {isMenuOpen ? '#000b' : '#0000'}; backdrop-filter: {isMenuOpen ? 'blur(8px)' : 'blur(0px'}"
-   >
+   style:height={isMenuOpen ? '100%' : '50px'}
+   style:width={'100%'}
+   style:background-color={isMenuOpen ? '#0009' : '#0000'}
+>
 
-   <div class="hero" style="opacity: {isMenuOpen ? '1' : '0'}">
-      <h1>
-         <strong>Vincent JOURDAN</strong>
-      </h1>
-      <h2>
-         <strong>Développeur Applications Web & Mobiles</strong>
-      </h2>
+   <div class="header">
+      <div class="hero">
+         {#if currentPathName != (base || '/' || '')}
+            <h1><strong>Vincent JOURDAN</strong></h1>
+            <h2><strong>Développeur Applications Web & Mobiles</strong></h2>
+         {/if}
+      </div>
+      <button class="menu-button" aria-label="ouvrir menu" on:click={toggleMenu}>
+         <TagSvg size={linkIconSize} color={isMenuOpen ? '#777' : '#e02424'} />
+      </button>
    </div>
 
-   <div class="menu-list" style="opacity: {isMenuOpen ? '1' : '0'}">
+   <div 
+      class="menu-list" 
+      style:z-index={isMenuOpen ? '10' : '-1'}
+   >
       {#each allRoutes as route}
          <a 
             href={route.path} 
-            style="opacity: {isMenuOpen ? '1' : '0'}; "
-            class={base + $page.url.pathname == route.path ? "menu-item active" : "menu-item"} 
+            class="menu-item"
+            class:active={currentPathName === route.path}
+            style:opacity={elementOpacity}
             on:click={toggleMenu}
          >
-            <span class="icon">
-               {#if route.path === `${base}/`} <TagSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if route.path === `${base}/about`} <AboutSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if route.path === `${base}/project`} <ComputerSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if route.path === `${base}/skill`} <SkillSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if route.path === `${base}/experience`} <ExperienceSvg size={linkIconSize} color={'#E14242'}/>
-               {:else if route.path === `${base}/contact`} <ContactSvg size={linkIconSize} color={'#E14242'}/>
-               {/if}
-            </span>
+            <span class="icon"><svelte:component this={route.svg} size={linkIconSize} color={'#E14242'}/></span>
             <span class="link">{route.name}</span>
          </a>
       {/each}
+      <a 
+         href='https://www.linkedin.com/in/VincentJourdan' target="_blank" rel="noreferrer"
+         class="menu-item contact"
+         style:opacity={elementOpacity}
+      >
+         <span class="icon"><ContactSvg size={linkIconSize} color={'#E14242'}/></span>
+         <span class="link">Contact</span>
+      </a>
    </div>
 
-   <div class="footer" style="opacity: {isMenuOpen ? '1' : '0'}">
+   <div class="footer" style:opacity={elementOpacity}>
       <div>
          <a href='https://github.com/JOURDANVincent' target="_blank" rel="noreferrer">
             <GithubSvg size={footerIconSize} color={'#777'} />
          </a>
-         <a href='https://www.linkedin.com/in/VincentJourdan.' target="_blank" rel="noreferrer">
+         <a href='https://www.linkedin.com/in/VincentJourdan' target="_blank" rel="noreferrer">
             <LinkedinSvg size={footerIconSize} color={'#777'} />
          </a>
-         <!-- <a href='/contact' rel="noreferrer" on:click={toggleMenu}>
-            <EmailSvg size={footerIconSize} color={'#777'} />
-         </a> -->
       </div>
       <div>développé avec <span class="svelte">Svelte JS</span></div>
    </div>
@@ -103,33 +106,34 @@
 <style>
 
    .menu-button {
-      position: fixed;
-      z-index: 998;
-      right: 12px;
-      top: 24px;
       background-color: transparent !important;
+      padding: 0;
       border: none !important;
       outline: none !important;
       transition: 0.5s;
    }
 
    nav {
-      z-index: 999;
-      box-sizing: border-box;
-      width: 100%;
+      z-index: 10;
       position: fixed; 
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0; left: 0;
+      width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      backdrop-filter: blur(8px);
+      box-sizing: border-box;
+      border-bottom: 1px solid #4445;
+      box-shadow: 0px 1px 10px 1px #0005;
       transition: 0.5s;
    }
 
-   .hero {
-      padding-left: 16px;
-      margin-top: 12px;
+   .header {
+      display: inline-flex;
+      justify-content: space-between;
+      padding-top: 10px;
+      padding-inline: 16px;
       box-sizing: border-box;
-      transition: 0.5s;
    }
 
    .hero h1, .hero h2 {
@@ -137,12 +141,13 @@
    }
 
    .hero h1 {
-      font-size: 1.66rem;
+      color: #fff;
+      font-size: 1.2rem;
    }
 
    .hero h2 {
-      font-size: 0.7rem;
-      font-weight: normal;
+      color: #E14242;
+      font-size: 0.51rem;
    }
 
    .menu-list {
@@ -151,8 +156,8 @@
       box-sizing: border-box;
       padding-inline: 16px;
       margin-inline: auto;
-      display: flex;
       flex-direction: column;
+      overflow: hidden;
    }
 
    .menu-item {
@@ -162,26 +167,25 @@
       text-decoration: none;
       padding: 6px;
       padding-top: 10px;
-      /* margin-bottom: 3px; */
       box-sizing: border-box;
       border-bottom: 1px solid #fff2;
-      transition: 0.5s;
+      transition: 0.3s;
    }
    .menu-item:last-of-type {
       border-bottom: 1px solid transparent;
    }
    .menu-item:hover {
-      background-color: #fff2;
+      background-color: #fff1;
    }
+
+   /* .contact:hover {
+      background-color: transparent !important;
+   } */
 
    .active {
       background-color: #fff2;
-      /* border-bottom: 1px solid #fff; */
-      /* border-bottom: 1px solid #fff; */
       padding-left: 16px;
-      /* box-shadow: inset 2px 2px 5px 2px #0008; */
       border-bottom: 1px solid transparent;
-      transition: 0.5s;
    }
 
    .icon {
@@ -201,8 +205,10 @@
       justify-content: space-between;
       align-items: center;
       padding-inline: 16px;
-      margin-bottom: 8px;
+      padding-bottom: 8px;
+      /* margin-bottom: 8px; */
       box-sizing: border-box;
+      transition: 0.3s;
    }
 
    .footer a {
@@ -224,22 +230,20 @@
 
    @media (min-width: 768px ) { 
 
-      .menu-button {
-         right: 36px;
-         top: 36px;
+      nav {
+         min-height: 70px;
       }
 
-      .hero {
-         padding-left: 50px;
-         margin-top: 36px;
+      .header {
+         padding-inline: 36px;
       }
 
       .hero h1 {
-         font-size: 2.8rem;
+         font-size: 1.6rem;
       }
 
       .hero h2 {
-         font-size: 1.2rem;
+         font-size: 0.69rem;
       }
 
       .menu-item {
@@ -254,9 +258,12 @@
          padding-right: 24px;
       }
 
+      .active {
+         padding-left: 36px;
+      }
+
       .footer {
-         padding-inline: 50px;
-         margin-bottom: 24px;
+         padding-inline: 36px;
       }
 
       .footer > div {

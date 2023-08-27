@@ -25,18 +25,15 @@
 
 html, body, .app {
 	z-index: 0;
-	/* max-width: 1600px; */
+	height: 100%;
 	width: 100%;
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 
-
-body {
-	
+html {
 	background-attachment: fixed;
-	background-color: var(--color-bg-1);
-	background-size: 100% 100%;
 	background-image: 
 		radial-gradient(
 			50% 50% at 50% 50%,
@@ -44,11 +41,6 @@ body {
 			rgba(255, 255, 255, 0) 100%
 		),
 		linear-gradient(0deg, #151515 30%, #252525 );
-	color: #fff;
-}
-
-main .skill_section {
-	min-height: 100vh;
 }
 
 h1, h2, h3, p {
@@ -59,7 +51,7 @@ h1 {
 	color: #E14242;
 	font-size: 2.6rem;
 	margin-bottom: 0.7rem;
- }
+}
 
 p {
 	color: #fff; 
@@ -69,4 +61,25 @@ p {
 
 a:hover, button:hover {
 	cursor: pointer;
+}
+
+section {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position-y: 40%;
+	background-attachment: fixed;
+	max-width: 1200px;
+	margin-inline: auto;
+	padding: 8px; 
+	box-sizing: border-box;
+}
+
+/* SCROLL BAR */
+::-webkit-scrollbar {
+	width: 5px;
+	background-color: #222;
+}
+/* Add a thumb */
+::-webkit-scrollbar-thumb {
+	background: #E1424290;
 }

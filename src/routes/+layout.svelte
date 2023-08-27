@@ -5,8 +5,10 @@
 	import { page } from '$app/stores';
 	// import { SITE_NAME, META_DATA } from '$lib/data/meta.data'
 
-	// COMPONENTS
+	// NAVBAR
 	import SingleNavbar from '$lib/components/Single.navbar.svelte';
+	let isMenuOpen: boolean = false;
+   	const toggleMenu = () => isMenuOpen = !isMenuOpen
 
 	// REACTIVE
    	// $: {
@@ -39,14 +41,14 @@
 		<slot />
 	</main>
 
-	<SingleNavbar />
+	<SingleNavbar {isMenuOpen} {toggleMenu}/>
 
 </div>
 
 <style>
 
 	main {
-		min-height: 100vh;
+		min-height: 100%;
 		width: 100%;
 		display: flex; 
 		flex-direction: column; 
@@ -59,8 +61,8 @@
 	@media (max-width: 767px) {
 
 		main {
-			padding-inline: 12px;
-			padding-top: 24px;
+			padding-inline: 8px;
+			padding-top: 60px;
 			padding-bottom: 8px;
 		}
 	}
@@ -69,6 +71,7 @@
 
 		main {
 			padding-inline: 4%;
+			padding-top: 70px;
 		}
 	}
 

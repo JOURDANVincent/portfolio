@@ -52,14 +52,6 @@
 
    section {
       background-image: url(/images/svg/section/about.svg);
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position-y: 40%;
-      background-attachment: fixed;
-      max-width: 1400px;
-      margin-inline: auto;
-      padding: 8px; 
-      box-sizing: border-box;
    }
 
    p strong {
@@ -77,7 +69,6 @@
       }
 
       .about {
-         max-width: 1100px;
          margin-inline: auto;
       }
    }

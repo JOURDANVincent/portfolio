@@ -1,5 +1,7 @@
 <script lang="ts">
 
+    export let isMenuOpen: boolean;
+
     const firstName = "Vincent"
     const lastName = "JOURDAN"
     const subTitle = "Développeur Applications Web & Mobiles";
@@ -8,10 +10,10 @@
 
 <section>
 
-    <div class="hero">
+    <div class="hero" >
         <h1><strong>{firstName}</strong><strong class="lastName">{` ${lastName}`}</strong></h1>
         <h2>{subTitle}</h2>
-        <a type="button" aria-label="me contacter" href="/contact">Contactez-moi</a>
+        <a aria-label="me contacter" href='https://www.linkedin.com/in/VincentJourdan' target="_blank" rel="noreferrer">Contactez-moi</a>
     </div>
 
 </section>
@@ -77,6 +79,7 @@
             line-height: 42px;
             margin: 0;
         }
+
         h2 {
             font-size: 17px;
             line-height: 20px;
