@@ -74,7 +74,7 @@
         font-style: normal;
         font-weight: bold;
         padding-right: 10px;
-        border-right: 1px solid #444;
+        /* border-right: 2px solid #000; */
     }
 
     .techno > strong {

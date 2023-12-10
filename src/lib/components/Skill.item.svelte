@@ -54,6 +54,7 @@
         box-shadow:  1px 1px 5px 2px #fff2;
         border: 1px solid #000;
         box-sizing: border-box;
+        border-radius: 5px;
     }
 
     img {

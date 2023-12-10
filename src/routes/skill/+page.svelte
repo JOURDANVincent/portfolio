@@ -24,8 +24,8 @@
    <div class="filter-block" style:top={x >= 768 ? '76px' : '56px'}>
       <button class={`filter-button ${filter === 'all' ? "active" : ""}`} on:click={() => filterType('all')}>Tout</button>
       <button class={`filter-button ${filter === 'mobile' ? "active" : ""}`} on:click={() => filterType('mobile')}>Mobile</button>
-      <button class={`filter-button ${filter === 'frontend' ? "active" : ""}`} on:click={() => filterType('frontend')}>Front</button>
-      <button class={`filter-button ${filter === 'backend' ? "active" : ""}`} on:click={() => filterType('backend')}>Back</button>
+      <button class={`filter-button ${filter === 'frontend' ? "active" : ""}`} on:click={() => filterType('frontend')}>Front-End</button>
+      <button class={`filter-button ${filter === 'backend' ? "active" : ""}`} on:click={() => filterType('backend')}>Back-End</button>
       <button class={`filter-button ${filter === 'database' ? "active" : ""}`} on:click={() => filterType('database')}>Database</button>
    </div>
    
@@ -99,16 +99,17 @@
       background-color: #fff2;
       backdrop-filter: blur(12px);
       color: #000;
-      font-weight: bold;
+      /* font-weight: bold; */
       padding-inline: 16px;
       margin-right: 2px;
       margin-bottom: 6px;
       box-sizing: border-box;
       border: none;
+      border-radius: 5px;
    }
 
    .active {
-      background-color: #000;
+      background-color: #E14242;
       color: #fff;
       font-weight: bold;
    }

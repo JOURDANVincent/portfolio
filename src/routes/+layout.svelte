@@ -48,7 +48,7 @@
 <style>
 
 	main {
-		min-height: 100%;
+		height: 100%;
 		width: 100%;
 		display: flex; 
 		flex-direction: column; 
@@ -61,7 +61,7 @@
 	@media (max-width: 767px) {
 
 		main {
-			padding-inline: 8px;
+			padding-inline: 18px;
 			padding-top: 60px;
 			padding-bottom: 8px;
 		}

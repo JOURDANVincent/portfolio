@@ -20,10 +20,11 @@
    
    // ROUTES & PATH
    const allRoutes = [ 
-      { name: 'A Propos de moi', path: `${base}/about`, svg: AboutSvg},
-      { name: 'Réalisations Web & Mobile', path: `${base}/project`, svg: ComputerSvg},
+      { name: 'A Propos', path: `${base}/about`, svg: AboutSvg},
+      { name: 'Mes Réalisations', path: `${base}/project`, svg: ComputerSvg},
+      { name: 'Formations', path: `${base}/study`, svg: ExperienceSvg},
       { name: 'Expériences & Formations', path: `${base}/experience`, svg: ExperienceSvg},
-      { name: 'Languages & Framworks', path: `${base}/skill`, svg: SkillSvg},
+      { name: 'Compétences & Connaissances', path: `${base}/skill`, svg: SkillSvg},
    ]
    $: currentPathName = $page.url.pathname
 

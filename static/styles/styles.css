@@ -25,7 +25,7 @@
 
 html, body, .app {
 	z-index: 0;
-	height: 100%;
+	min-height: 100%;
 	width: 100%;
 	margin: 0;
 	padding: 0;
@@ -41,6 +41,10 @@ html {
 			rgba(255, 255, 255, 0) 100%
 		),
 		linear-gradient(0deg, #151515 30%, #252525 );
+}
+
+.app {
+	height: 100%;
 }
 
 h1, h2, h3, p {
